@@ -1,0 +1,193 @@
+@use "@/global/styles/colors.scss" as *;
+@use "sass:map";
+@use "tailwindcss";
+
+:root {
+  --background: #f5f5f5;
+  --foreground: #1a1a1a;
+}
+
+@theme inline {
+  --breakpoint-ml: 840px;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+// * {
+//   outline: 1px solid red;
+// }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1a1a1a;
+    --foreground: #f5f5f5;
+  }
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.4;
+}
+button:focus {
+  outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+input,
+textarea,
+select {
+  &:focus {
+    outline: none;
+  }
+}
+
+mark {
+  background-color: transparent;
+}
+
+@layer base {
+  .layout-padding {
+    @apply lg:p-20 p-6;
+  }
+  .layout-padding-x {
+    @apply lg:px-20 px-6;
+  }
+  .align-abs-middle {
+    @apply left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%] absolute;
+  }
+  .align-abs-y {
+    @apply top-[50%] -translate-y-[50%] absolute;
+  }
+  .align-abs-x {
+    @apply left-[50%] -translate-x-[50%] absolute;
+  }
+  .img-container {
+    @apply relative shrink-0 overflow-hidden;
+  }
+  .regular-btn-padding {
+    @apply px-3 sm:px-6 py-2 rounded-xl text-center w-fit shrink-0;
+  }
+  .icon-btn-padding {
+    @apply p-3 rounded-xl;
+  }
+  .flex-center-3 {
+    @apply flex items-center gap-3;
+  }
+  .flex-center {
+    @apply flex items-center;
+  }
+  .trans-3 {
+    @apply transition-all duration-200;
+  }
+  .shadow-base {
+    @apply shadow-[0_0_6px_rgb(0,0,0,.15)];
+  }
+  .pdf-modal {
+    @apply md:!min-w-[80%] md:!max-h-[90%] h-full;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+html,
+body,
+#__next {
+  font-family: var(--font-geist-sans);
+  height: 100%;
+  width: 100%;
+}
+
+p {
+  font-size: 18px;
+}
+
+h1 {
+  font-size: 48px;
+}
+h2 {
+  font-size: 40px;
+}
+h3 {
+  font-size: 32px;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 500;
+}
+
+.ReactModalPortal {
+  z-index: 10;
+  > div {
+    background-color: #00000040 !important;
+    &:has(.centered) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  &:has(.no-back) {
+    > div {
+      background-color: #00000000 !important;
+    }
+  }
+}
+.default-modal {
+  min-width: 330px;
+  background-color: #fff;
+  border-radius: 0.75rem;
+}
+@media (max-width: "768px") {
+  .default-modal:not(.sm-modal) {
+    height: 100%;
+    &.single-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+@each $name, $color in $colors {
+  .bg-#{$name} {
+    background-color: #{$color};
+  }
+  .text-#{$name} {
+    color: #{$color};
+  }
+  .border-#{$name} {
+    border-color: #{$color};
+  }
+  .hover-bg-#{$name}:hover {
+    background-color: #{$color};
+  }
+  .hover-text-#{$name}:hover {
+    color: #{$color};
+  }
+}

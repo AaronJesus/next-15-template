@@ -1,0 +1,11 @@
+@use "@/global/styles/animations.scss";
+
+.skeleton-text {
+  border-radius: 0.75rem;
+  background-color: #424242;
+  animation: colorPulse 1.5s infinite;
+}
+
+.skeleton-loader {
+  animation: opacityPulse 1.5s infinite;
+}

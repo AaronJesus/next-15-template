@@ -1,0 +1,32 @@
+@use "sass:map";
+@use "@/global/styles/colors.scss" as *;
+
+.label-input-container {
+  max-width: 100%;
+  .input-container {
+    padding-inline: 0.5rem;
+    padding-block: 0.25rem;
+    border: 1px solid map.get($colors, "gray");
+    border-radius: 0.75rem;
+    select.input-element {
+      padding-block: 0.6rem;
+    }
+    &:has(input.input-element:read-only) {
+      background-color: map.get($colors, "beige");
+      input {
+        cursor: not-allowed;
+      }
+    }
+    .input-element {
+      resize: none;
+      padding: 0.4rem 0.5rem;
+      flex-grow: 1;
+      &:focus {
+        border-color: black;
+      }
+    }
+    textarea {
+      min-height: 120px;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+@use "@/global/styles/colors.scss" as *;
+@use "sass:map";
+
+.spinner-div {
+  animation: spin 1.25s infinite linear;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

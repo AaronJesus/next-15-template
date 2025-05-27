@@ -1,0 +1,41 @@
+@import "@/global/styles/colors.scss";
+
+@keyframes skeletonScan {
+  0% {
+    top: -40px;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes skeletonBounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes colorPulse {
+  100%,
+  0% {
+    background-color: #424242;
+  }
+  50% {
+    background-color: #161616;
+  }
+}
+@keyframes opacityPulse {
+  100%,
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
